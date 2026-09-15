@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos EECCAM</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header class="header">
+    <div class="logo-area">
+        <div class="logo-icon">
+            <span class="material-symbols-outlined">school</span>
+        </div>
+        <div>
+            <h2>EECCAM</h2>
+            <span>Achados e Perdidos</span>
+        </div>
+    </div>
+
+    <nav class="desktop-nav">
+        <button onclick="mostrarPagina('inicio')">Início</button>
+        <button onclick="abrirChamado()">Abrir chamado</button>
+        <button onclick="mostrarPagina('achados')">Achados</button>
+        <button onclick="mostrarPagina('perfil')">Meu perfil</button>
+    </nav>
+
+    <div class="header-actions">
+        <button id="botaoLogin" class="btn-login" onclick="mostrarPagina('login')">Entrar</button>
+        <button id="botaoPerfil" class="profile-button" onclick="mostrarPagina('perfil')">
+            <span class="material-symbols-outlined">person</span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <section id="inicio" class="pagina ativa">
+        <div class="hero">
+            <div class="hero-text">
+                <span class="tag">EECCAM • Sistema oficial</span>
+                <h1>Perdeu alguma coisa?<strong>Fale com a escola.</strong></h1>
+                <p>
+                    O <b>Achados e Perdidos EECCAM</b> facilita a comunicação
+                    entre estudantes e a escola para localizar e recuperar objetos perdidos.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="abrirChamado()">
+                        <span class="material-symbols-outlined">chat</span>
+                        Abrir chamado
+                    </button>
+                    <button class="btn-secondary" onclick="mostrarPagina('achados')">
+                        <span class="material-symbols-outlined">search</span>
+                        Ver achados
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="illustration">
+                    <span class="material-symbols-outlined">backpack</span>
+                    <span class="material-symbols-outlined">key</span>
+                    <span class="material-symbols-outlined">description</span>
+                </div>
+                <h3>Achados e Perdidos</h3>
+                <p>Registre um objeto perdido ou encontrado e acompanhe sua situação.</p>
+                <button onclick="abrirChamado()">Falar com a escola</button>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span>SIMPLES E RÁPIDO</span>
+            <h2>Como funciona?</h2>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon"><span class="material-symbols-outlined">edit</span></div>
+                <h3>1. Registre</h3>
+                <p>Informe o objeto que você perdeu ou encontrou.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon"><span class="material-symbols-outlined">forum</span></div>
+                <h3>2. Converse com a escola</h3>
+                <p>Acompanhe seu chamado e envie informações adicionais.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon"><span class="material-symbols-outlined">verified</span></div>
+                <h3>3. Recupere</h3>
+                <p>Quando o objeto for localizado, combine a retirada com a escola.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="login" class="pagina">
+        <div class="form-container">
+            <div class="form-header">
+                <div class="form-icon"><span class="material-symbols-outlined">login</span></div>
+                <h1>Entrar</h1>
+                <p>Acesse sua conta EECCAM.</p>
+            </div>
+
+            <form onsubmit="fazerLogin(event)">
+                <label for="loginEmail">E-mail</label>
+                <input id="loginEmail" type="email" required>
+
+                <label for="loginSenha">Senha</label>
+                <input id="loginSenha" type="password" required>
+
+                <button class="btn-primary full" type="submit">Entrar</button>
+            </form>
+
+            <div class="form-footer">
+                Ainda não tem conta?
+                <button onclick="mostrarPagina('cadastro')">Criar conta</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cadastro" class="pagina">
+        <div class="form-container">
+            <div class="form-header">
+                <div class="form-icon"><span class="material-symbols-outlined">person_add</span></div>
+                <h1>Criar conta</h1>
+                <p>Cadastre seus dados para utilizar o sistema.</p>
+            </div>
+
+            <form onsubmit="criarConta(event)">
+                <label for="cadastroNome">Nome</label>
+                <input id="cadastroNome" type="text" required>
+
+                <label for="cadastroEmail">E-mail</label>
+                <input id="cadastroEmail" type="email" required>
+
+                <label for="cadastroMatricula">Matrícula</label>
+                <input id="cadastroMatricula" type="text" required>
+
+                <label for="cadastroTurma">Turma</label>
+                <input id="cadastroTurma" type="text" required>
+
+                <label for="cadastroSenha">Senha</label>
+                <input id="cadastroSenha" type="password" minlength="4" required>
+
+                <button class="btn-primary full" type="submit">Criar conta</button>
+            </form>
+
+            <div class="form-footer">
+                Já possui conta?
+                <button onclick="mostrarPagina('login')">Entrar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="achados" class="pagina">
+        <div class="section-title">
+            <span>EECCAM</span>
+            <h2>Objetos cadastrados</h2>
+        </div>
+
+        <div class="form-container">
+            <label for="buscaAchados">Pesquisar</label>
+            <input id="buscaAchados" type="search"
+                   placeholder="Ex.: mochila, chave, sala 2..."
+                   oninput="renderizarAchados()">
+
+            <label for="filtroStatus">Status</label>
+            <select id="filtroStatus" onchange="renderizarAchados()"
+                    style="width:100%;padding:14px;border-radius:9px;border:1px solid var(--border);font-family:inherit">
+                <option value="todos">Todos</option>
+                <option value="aberto">Procurando dono</option>
+                <option value="encontrado">Encontrado</option>
+                <option value="devolvido">Devolvido</option>
+            </select>
+        </div>
+
+        
+        <div class="form-container" style="max-width:800px;margin-top:25px;">
+            <div class="form-header">
+                <div class="form-icon"><span class="material-symbols-outlined">add_box</span></div>
+                <h2>Registrar objeto</h2>
+                <p>Cadastre algo que você perdeu ou encontrou na escola.</p>
+            </div>
+
+            <form onsubmit="registrarAchado(event)">
+                <label for="objetoTipo">Tipo de registro</label>
+                <select id="objetoTipo" required
+                    style="width:100%;padding:14px;border-radius:9px;border:1px solid var(--border);font-family:inherit">
+                    <option value="perdido">Perdi um objeto</option>
+                    <option value="encontrado">Encontrei um objeto</option>
+                </select>
+
+                <label for="objetoNome">Nome do objeto</label>
+                <input id="objetoNome" type="text" placeholder="Ex.: Mochila preta" required>
+
+                <label for="objetoCategoria">Categoria</label>
+                <select id="objetoCategoria" required
+                    style="width:100%;padding:14px;border-radius:9px;border:1px solid var(--border);font-family:inherit">
+                    <option value="">Selecione</option>
+                    <option>Mochila</option>
+                    <option>Chave</option>
+                    <option>Documento</option>
+                    <option>Material escolar</option>
+                    <option>Eletrônico</option>
+                    <option>Roupa</option>
+                    <option>Outro</option>
+                </select>
+
+                <label for="objetoLocal">Local</label>
+                <input id="objetoLocal" type="text" placeholder="Ex.: Sala 03" required>
+
+                <label for="objetoDescricao">Descrição</label>
+                <input id="objetoDescricao" type="text"
+                    placeholder="Cor, marca, características..." required>
+
+                <button class="btn-primary full" type="submit">
+                    <span class="material-symbols-outlined">save</span>
+                    Registrar objeto
+                </button>
+            </form>
+        </div>
+
+<div id="listaAchados" class="steps" style="margin-top:25px;"></div>
+    </section>
+
+    <section id="chat" class="pagina">
+        <div class="chat-container">
+            <div class="chat-header">
+                <button onclick="mostrarPagina('inicio')" title="Voltar">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div class="school-avatar">
+                    <span class="material-symbols-outlined">school</span>
+                </div>
+                <div>
+                    <h2>Achados e Perdidos EECCAM</h2>
+                    <span>Atendimento da escola</span>
+                </div>
+            </div>
+
+            <div id="mensagens" class="messages"></div>
+
+            <form class="chat-input" onsubmit="enviarMensagem(event)">
+                <input id="mensagemInput" type="text" maxlength="500"
+                       placeholder="Digite sua mensagem..." autocomplete="off">
+                <button type="submit" title="Enviar">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="perfil" class="pagina">
+        <div class="profile-container">
+            <div class="profile-top">
+                <div class="profile-avatar">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <div>
+                    <span>CONTA EECCAM</span>
+                    <h1 id="perfilNome">Visitante</h1>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-info"><span>Nome</span><strong id="perfilNomeCompleto">Visitante</strong></div>
+                <div class="profile-info"><span>E-mail</span><strong id="perfilEmail">Não informado</strong></div>
+                <div class="profile-info"><span>Matrícula</span><strong id="perfilMatricula">Não informado</strong></div>
+                <div class="profile-info"><span>Turma</span><strong id="perfilTurma">Não informado</strong></div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-primary" onclick="abrirChamado()">Abrir chamado</button>
+                <button class="btn-secondary" onclick="mostrarPagina('achados')">Ver achados</button>
+                <button class="btn-danger" onclick="sairDaConta()">Sair da conta</button>
+            </div>
+
+            <div class="section-title" style="margin-top:50px;">
+                <span>SEUS REGISTROS</span>
+                <h2>Meus objetos</h2>
+            </div>
+            <div id="meusAchados" class="steps"></div>
+        </div>
+    </section>
+
+    <div id="toast" class="toast"></div>
+
+    <nav class="mobile-nav">
+        <button onclick="mostrarPagina('inicio')">
+            <span class="material-symbols-outlined">home</span>
+            <small>Início</small>
+        </button>
+        <button onclick="mostrarPagina('achados')">
+            <span class="material-symbols-outlined">search</span>
+            <small>Achados</small>
+        </button>
+        <button onclick="abrirChamado()">
+            <span class="material-symbols-outlined">add_comment</span>
+            <small>Chamado</small>
+        </button>
+        <button onclick="mostrarPagina('perfil')">
+            <span class="material-symbols-outlined">person</span>
+            <small>Perfil</small>
+        </button>
+    </nav>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
